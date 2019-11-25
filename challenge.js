@@ -13,11 +13,13 @@ function addDataRowsTableChallenge(item, index) {
     btnEdit.className = "btn-edit-challenge";
     btnEdit.setAttribute("data", "data-" + rowCount);
     btnEdit.setAttribute("onclick", "editFormInTable('"+ rowCount +"')");
-    btnEdit.innerHTML = "edit";
+    btnEdit.innerHTML = "Edit";
     let cellId = row.insertCell(0);
     let cellFullname = row.insertCell(1);
     let cellAddress = row.insertCell(2);
     let cellAction = row.insertCell(3);
+    // adding style align
+    cellAction.style.textAlign = "center";
     // appendChild
     cellAction.appendChild(btnEdit);
     cellId.innerHTML = rowCount++;
@@ -42,6 +44,7 @@ function editFormInTable(id) {
     let inputEditAddress = document.createElement("textarea");
     inputEditAddress.name = "input-address-challenge";
     inputEditAddress.className = "form-challenge";
+    inputEditAddress.rows = "5";
     // remove text in cell
     table.rows[id].cells[1].innerHTML = "";
     table.rows[id].cells[2].innerHTML = "";
@@ -76,15 +79,63 @@ function editFormInTable(id) {
 *
 **/
 function saveFormInTable(id) {
-    const table = document.getElementById("data-show-challenge");
-    let fullname = document.getElementsByName("input-fullname-challenge")[0].value;
-    let address = document.getElementsByName("input-address-challenge")[0].value;
-    // save data to cell
-    table.rows[id].cells[1].innerHTML = fullname;
-    table.rows[id].cells[2].innerHTML = address;
-    // change display button in cell
-    document.getElementById("btn-edit-challenge-" + id).style.display = "";
-    document.getElementById("btn-save-challenge-" + id).style.display = "none";
+    let arrElementForm = {
+        fullname: document.getElementsByName("input-fullname-challenge"),
+        address: document.getElementsByName("input-address-challenge")
+    };
+    const inputForm = Object.keys(arrElementForm).length; // sum input form
+    let counter = 0;
+    // validate input before save
+    Object.keys(arrElementForm).forEach (function (item) {
+        if (arrElementForm[item]) {
+            let strTextForm = arrElementForm[item][0].value;
+            let formName = arrElementForm[item][0].name;
+            let tagElement = arrElementForm[item][0].tagName;
+            let strLength = strTextForm.length;
+            // check length string is empty
+            if (strLength <= 0) { // if empty
+                // alert wrong function
+                alert("กรุณากรอกข้อมูล");
+            } else { // or have
+                // check type element in function
+                switch(tagElement) {
+                    case "INPUT":
+                            if (strLength < 20) {
+                                alert("ระบุตัวอักษรระหว่าง 20-50 ตัวอักษร");
+                            } else if (strLength > 50) {
+                                alert("ระบุตัวอักษรระหว่าง 20-50 ตัวอักษร");
+                            } else {
+                                counter++;
+                            }
+                        break;
+                    case "TEXTAREA":
+                            if (strLength < 50) {
+                                alert("ระบุตัวอักษรระหว่าง 50-100 ตัวอักษร");
+                            } else if (strLength > 100) {
+                                alert("ระบุตัวอักษรระหว่าง 50-100 ตัวอักษร");
+                            } else {
+                                counter++;
+                            }
+                        break;
+                }
+            }
+        }
+    });
+    if (counter >= inputForm) {
+        const table = document.getElementById("data-show-challenge");
+        let fullname = document.getElementsByName("input-fullname-challenge")[0].value;
+        let address = document.getElementsByName("input-address-challenge")[0].value;
+        // save data to cell
+        table.rows[id].cells[1].innerHTML = fullname;
+        table.rows[id].cells[2].innerHTML = address;
+        // change display button in cell
+        document.getElementById("btn-edit-challenge-" + id).style.display = "";
+        // remove button save and cancel
+        const btnSave = document.getElementById("btn-save-challenge-" + id);
+        const btnCancel = document.getElementById("btn-cancel-challenge-" + id);
+        btnSave.parentNode.removeChild(btnSave);
+        btnCancel.parentNode.removeChild(btnCancel);
+    }
 }
 /**
 * function cancelFormInTable 
@@ -94,12 +145,20 @@ function saveFormInTable(id) {
 function cancelFormInTable(id, getFullname, getAddress) {
     const table = document.getElementById("data-show-challenge");
     // remove text in cell
+    table.rows[id].cells[0].innerHTML = "";
     table.rows[id].cells[1].innerHTML = "";
     table.rows[id].cells[2].innerHTML = "";
     // save data to cell
+    console.log(getFullname)
+    console.log(getAddress)
+    table.rows[id].cells[0].innerHTML = id;
     table.rows[id].cells[1].innerHTML = getFullname;
     table.rows[id].cells[2].innerHTML = getAddress;
+    // change display button in cell
     document.getElementById("btn-edit-challenge-" + id).style.display = "";
-    document.getElementById("btn-save-challenge-" + id).style.display = "none";
-    document.getElementById("btn-cancel-challenge-" + id).style.display = "none";
+    // remove button save and cancel
+    const btnSave = document.getElementById("btn-save-challenge-" + id);
+    const btnCancel = document.getElementById("btn-cancel-challenge-" + id);
+    btnSave.parentNode.removeChild(btnSave);
+    btnCancel.parentNode.removeChild(btnCancel);
 }
