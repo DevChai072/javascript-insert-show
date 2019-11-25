@@ -1,5 +1,5 @@
 /**
-* function addDataRowsTableChallenge 
+* Function for add data to table-challenge
 * Dev : Somchai O00085
 *
 **/
@@ -29,7 +29,7 @@ function addDataRowsTableChallenge(item, index) {
     cellAddress.innerHTML = item.address;
 }
 /**
-* function editFormInTable 
+* Function for edit data in table-challenge
 * Dev : Somchai O00085
 *
 **/
@@ -76,12 +76,12 @@ function editFormInTable(id) {
     table.rows[id].cells[3].appendChild(btnCancel);
 }
 /**
-* function saveFormInTable 
+* Function for save data to table after update new values
 * Dev : Somchai O00085
 *
 **/
 function saveFormInTable(id) {
-    let arrElementForm = {
+    const arrElementForm = {
         fullname: document.getElementsByName("input-fullname-challenge"),
         address: document.getElementsByName("input-address-challenge")
     };
@@ -125,8 +125,10 @@ function saveFormInTable(id) {
     });
     if (counter >= inputForm) {
         const table = document.getElementById("data-show-challenge");
-        let fullname = document.getElementsByName("input-fullname-challenge")[0].value;
-        let address = document.getElementsByName("input-address-challenge")[0].value;
+        // let fullname = document.getElementsByName("input-fullname-challenge")[0].value;
+        // let address = document.getElementsByName("input-address-challenge")[0].value;
+        const fullname = arrElementForm.fullname[0].value;
+        const address = arrElementForm.address[0].value;
         // save data to cell
         table.rows[id].cells[1].innerHTML = fullname;
         table.rows[id].cells[2].innerHTML = address;
@@ -140,7 +142,7 @@ function saveFormInTable(id) {
     }
 }
 /**
-* function cancelFormInTable 
+* Function for cancel form edit return to original value
 * Dev : Somchai O00085
 *
 **/
@@ -151,8 +153,6 @@ function cancelFormInTable(id, getFullname, getAddress) {
     table.rows[id].cells[1].innerHTML = "";
     table.rows[id].cells[2].innerHTML = "";
     // save data to cell
-    console.log(getFullname)
-    console.log(getAddress)
     table.rows[id].cells[0].innerHTML = id;
     table.rows[id].cells[1].innerHTML = getFullname;
     table.rows[id].cells[2].innerHTML = getAddress;

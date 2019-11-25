@@ -124,6 +124,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- element form input -->
         <section id="form">
             <div class="form-group">
                 <label>ชื่อ-นามสกุล</label>
@@ -141,6 +142,8 @@
                 <button id="btn-edit" style="display: none;">แก้ไข</button>
             </div>
         </section>
+        <!-- end element form input -->
+        <!-- element table -->
         <section id="table-data">
             <caption><h2 class="title-table"><strong>Basic</strong></h2></caption>
             <table id="data-show">
@@ -163,6 +166,8 @@
                 </tr>
             </table>
         </section>
+        <!-- end element table -->
+        <!-- element note -->
         <section id="note">
             <div class="nav-grid">
                 <div class="note-add">
@@ -186,15 +191,20 @@
                 </div>
             </div>
         </section>
+        <!-- end element note -->
     </div>
     
     <script src="./challenge.js"></script>
     <script>
-        // set starting id value
-        let itemId = 1;
+        /**
+        * Function {event} Click submit form
+        * Dev Somchai O00085
+        * */
+        // set starting id value 
+        var itemId = 1;
         document.getElementById("btn-confirm").addEventListener("click", function() {
             // set element form to object
-            let arrElementForm = {
+            const arrElementForm = {
                 fullname: document.getElementsByName("input-fullname"),
                 address: document.getElementsByName("input-address")
             };
@@ -205,10 +215,9 @@
             console.log("textarea-length => " + lengthTextarea.length)
             // end ---
             const inputForm = Object.keys(arrElementForm).length; // sum input form
-            let elementMaster = []; // array prepair
+            const elementMaster = []; // array prepair
             let counter = 0;
-            // forEach obj
-            // for validate form
+            // for validate form {forEach obj}
             Object.keys(arrElementForm).forEach (function (item) {
                 if (arrElementForm[item]) {
                     let strTextForm = arrElementForm[item][0].value;
@@ -268,10 +277,13 @@
             }
         });
 
-        // event btn edit
+        /**
+        * Function {event} Click edit form
+        * Dev Somchai O00085
+        * */
         document.getElementById("btn-edit").addEventListener("click", function() {
             // set element form to object
-            let arrElementForm = {
+            const arrElementForm = {
                 fullname: document.getElementsByName("input-fullname"),
                 address: document.getElementsByName("input-address")
             };
@@ -281,8 +293,7 @@
             console.log("textarea-length => " + lengthTextarea.length)
             const inputForm = Object.keys(arrElementForm).length; // sum input form
             let counter = 0;
-            // forEach obj
-            // for validate form
+            // for validate form {forEach obj}
             Object.keys(arrElementForm).forEach (function (item) {
                 if (arrElementForm[item]) {
                     let strTextForm = arrElementForm[item][0].value;
@@ -329,9 +340,9 @@
             // When has input item
             if (counter >= inputForm) {
                 const table = document.getElementById("data-show");
-                let id = document.getElementsByName("input-fullname")[0].attributes.data.value;
-                let fullname = document.getElementsByName("input-fullname")[0].value;
-                let address = document.getElementsByName("input-address")[0].value;
+                const id = document.getElementsByName("input-fullname")[0].attributes.data.value;
+                const fullname = arrElementForm.fullname[0].value;
+                const address = arrElementForm.address[0].value;
                 table.rows[id].cells[1].innerHTML = fullname;
                 table.rows[id].cells[2].innerHTML = address;
                 document.getElementById("btn-confirm").style.display = "";
@@ -343,7 +354,7 @@
         });
 
         /**
-        * function addDataRowsTable 
+        * Function Add data to table
         * Dev : Somchai O00085
         *
         **/
@@ -360,7 +371,6 @@
             btnEdit.className = "btn-edit";
             btnEdit.setAttribute("data", "data-" + rowCount);
             btnEdit.setAttribute("onclick", "editForm('"+ rowCount +"')");
-            
             // insert to rows
             let cellId = row.insertCell(0);
             let cellFullname = row.insertCell(1);
@@ -378,7 +388,7 @@
         }
 
         /**
-        * function editForm 
+        * Function for edit data from table 
         * Dev : Somchai O00085
         *
         **/
@@ -395,7 +405,7 @@
         }
 
         /**
-        * function resetForm 
+        * Function for reset form input 
         * Dev : Somchai O00085
         *
         **/
@@ -406,7 +416,7 @@
         }
 
         /**
-        * function alertWrong
+        * Function For alert required field
         * Dev : Somchai O00085
         *
         **/
@@ -416,7 +426,7 @@
         }
 
         /**
-        * function defaultTagSpan
+        * Function set defualt tag span alert text = empty
         * Dev : Somchai O00085
         *
         **/
@@ -424,7 +434,6 @@
             document.getElementById("alert-" + formName).innerHTML = "";
             document.getElementById("alert-" + formName).style.color = "";
         }
-
     </script>
 </body>
 </html>
