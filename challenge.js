@@ -8,7 +8,9 @@ function addDataRowsTableChallenge(item, index) {
     let rowCount = tableCha.rows.length;
     let row = tableCha.insertRow(rowCount);
     // create btn edit in cell action
-    let btnEdit = document.createElement("button");
+    // let btnEdit = document.createElement("button");
+    let btnEdit = document.createElement("a");
+    btnEdit.href = "#";
     btnEdit.id = "btn-edit-challenge-" + rowCount;
     btnEdit.className = "btn-edit-challenge";
     btnEdit.setAttribute("data", "data-" + rowCount);

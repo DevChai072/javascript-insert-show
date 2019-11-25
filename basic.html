@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
+
     <style>
         * {
             padding: 0;
@@ -13,11 +14,11 @@
             box-sizing: border-box;
         }
         .container {
-            padding: 50px 0 50px 10px;
-            /* background-color: rgb(104, 104, 104); */
+            padding: 50px;
+            background-color: azure;
         }
         section {
-            padding-top: 50px;
+            padding-top: 30px;
         }
         .form-group {
             display: inline-block;
@@ -34,15 +35,13 @@
             width: auto;
             vertical-align: top;
         }
-        /* set button confirm in form */
         .form-group #btn-confirm {
             color: #ffffff;
             background-color: rgb(0, 119, 255);
             border: 1px solid;
             border-radius: 10px;
-            padding: 10px 50px 10px 50px;
+            padding: 10px;
         }
-        /* set button edit{hide} in form */
         .form-group #btn-edit {
             color: #ffffff;
             background-color: rgb(255, 187, 0);
@@ -50,99 +49,45 @@
             border-radius: 10px;
             padding: 10px;
         }
-        /* set width table 100% */
-        #table-data table, #table-data-challenge table {
+        #table-data table {
             width: 100%;
         }
-        /* set border table */
-        #table-data table th, tr, td, #table-data-challenge table th, tr, td {
+        #table-data table, th, tr, td {
             border: 1px solid black;
         }
-        tr:nth-child(even) {
-            background-color: #e4d8f1;
-        }
-        /* set head table */
-        #table-data tr th, #table-data-challenge tr th {
+        #table-data tr th {
             padding: 10px;
             text-align: center;
             font-weight: 100px;
-            background-color: rgb(109, 253, 42);
-            color: azure;
         }
-        /* set word break in table */
-        #table-data td, #table-data-challenge td {
+        #table-data td {
             padding: 10px;
             text-align: left;
-            word-break: break-all;
-        }
-        /* set title in tag caption to center */
-        .title-table {
-            text-align: center;
-        }
-        /* set button in basic table and challenge table */
-        .btn-edit, .btn-edit-challenge {
-            font-size: 20px;
-            color: #296cff;
-            /* background-color: rgb(255, 187, 0); */
-            /* border: 1px solid; */
-            /* border-radius: 10px; */
-            /* padding: 10px; */
-        }
-        /* set button save in challenge table */
-        .btn-save-challenge {
-            font-size: 20px;
-            color: #ffffff;
-            background-color: rgb(0, 119, 255);
-            border: 1px solid;
-            border-radius: 10px;
-            padding: 5px 10px 5px 10px;
-            margin-right: 5px;
-        }
-        /* set button cancel in challenge table */
-        .btn-cancel-challenge {
-            font-size: 20px;
-            color: #ffffff;
-            background-color: hsl(212, 9%, 39%);
-            border: 1px solid;
-            border-radius: 10px;
-            padding: 5px 10px 5px 10px;
-        }
-        /* set form width in cell challenge table */
-        .form-challenge {
-            width: 100%;
-        }
-        section#note {
-            display: grid;
-            grid-template-columns: 50% 50%;
-        }
-        .nav-grid {
-            width: 100%;
-            padding: 30px;
-            background-color: rgb(223, 223, 223);
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <section id="form">
             <div class="form-group">
                 <label>ชื่อ-นามสกุล</label>
-                <input type="text" name="input-fullname" placeholder=" กรอกชื่อ นามสกุล">
+                <input type="text" name="input-fullname" placeholder="กรอกชื่อ นามสกุล">
                 <span id="alert-input-fullname"></span>
             </div>
             <div class="form-group">
-                <label class="t-center">ที่อยู่</label>
-                <textarea name="input-address" cols="50" rows="5" placeholder=" บ้านเลขที่&#10; ถนน&#10; ตำบล&#10; อำเภอ จังหวัด"></textarea>
+                <label>ที่อยู่</label>
+                <textarea name="input-address" cols="50" rows="5" placeholder="บ้านเลขที่&#10;ถนน&#10;ตำบล&#10;อำเภอ จังหวัด"></textarea>
                 <span id="alert-input-address"></span>
             </div>
             <div class="form-group">
                 <label></label>
-                <button id="btn-confirm">บันทึก</button>
-                <button id="btn-edit" style="display: none;">แก้ไข</button>
+                <button id="btn-confirm">Submit</button>
+                <button id="btn-edit" style="display: none;">Edit</button>
             </div>
         </section>
+        <hr>
         <section id="table-data">
-            <caption><h2 class="title-table"><strong>Basic</strong></h2></caption>
             <table id="data-show">
                 <tr>
                     <th width="10%">ลำดับ</th>
@@ -152,43 +97,8 @@
                 </tr>
             </table>
         </section>
-        <section id="table-data-challenge">
-            <caption><h2 class="title-table"><strong>Challenge</strong></h2></caption>
-            <table id="data-show-challenge">
-                <tr>
-                    <th width="10%">ลำดับ</th>
-                    <th width="30%">ชื่อ-นามสกุล</th>
-                    <th width="40%">ที่อยู่</th>
-                    <th width="20%">#</th>
-                </tr>
-            </table>
-        </section>
-        <section id="note">
-            <div class="nav-grid">
-                <div class="note-add">
-                    <h3>การเพิ่ม</h3>
-                    <ol>
-                        <li>กรอกชื่อนามสกุล ที่อยู่</li>
-                        <li>กดปุ่ม บันทึก</li>
-                        <li>ข้อมูลเพิ่มลงในตารง ในเเถวใหม่</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="nav-grid">
-                <div class="note-edit">
-                    <h3>การแก้ไข</h3>
-                    <ol>
-                        <li>กด Edit ที่เเต่ละเเถว</li>
-                        <li>ข้อมูลแสดงใน form</li>
-                        <li>กดปุ่มบันทึก</li>
-                        <li>ข้อมูลอัพเดทลงในตาราง แถวที่กด Edit</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
     </div>
     
-    <script src="./challenge.js"></script>
     <script>
         // set starting id value
         let itemId = 1;
@@ -198,12 +108,10 @@
                 fullname: document.getElementsByName("input-fullname"),
                 address: document.getElementsByName("input-address")
             };
-            // console.log length string
             const lengthText = arrElementForm.fullname[0].value;
             const lengthTextarea = arrElementForm.address[0].value;
             console.log("input-length => " + lengthText.length)
             console.log("textarea-length => " + lengthTextarea.length)
-            // end ---
             const inputForm = Object.keys(arrElementForm).length; // sum input form
             let elementMaster = []; // array prepair
             let counter = 0;
@@ -259,9 +167,7 @@
                     { id: itemId, fullname: arrElementForm.fullname[0].value, address: arrElementForm.address[0].value }
                 );
                 // show data on table
-                elementMaster.forEach(addDataRowsTable); 
-                // show data on table challenge
-                elementMaster.forEach(addDataRowsTableChallenge);
+                elementMaster.forEach(addDataRowsTable);
                 itemId++;
                 // clear form input after add data
                 resetForm();
@@ -343,7 +249,7 @@
         });
 
         /**
-        * function addDataRowsTable 
+        * function checkLengthValue 
         * Dev : Somchai O00085
         *
         **/
@@ -353,28 +259,23 @@
             let rowCount = table.rows.length;
             let row = table.insertRow(rowCount);
             // create btn edit in cell action
-            // let btnEdit = document.createElement("button");
-            let btnEdit = document.createElement("a");
-            btnEdit.href = "#";
+            let btnEdit = document.createElement("button");
             btnEdit.id = "btn-edit-" + rowCount;
             btnEdit.className = "btn-edit";
             btnEdit.setAttribute("data", "data-" + rowCount);
             btnEdit.setAttribute("onclick", "editForm('"+ rowCount +"')");
-            
             // insert to rows
             let cellId = row.insertCell(0);
             let cellFullname = row.insertCell(1);
             let cellAddress = row.insertCell(2);
             let cellAction = row.insertCell(3);
-            // adding style align
-            cellAction.style.textAlign = "center";
             // appendChild
             cellAction.appendChild(btnEdit);
             // assign text
             cellId.innerHTML = rowCount++;
             cellFullname.innerHTML = item.fullname;
             cellAddress.innerHTML = item.address;
-            btnEdit.innerHTML = "Edit";
+            btnEdit.innerHTML = "edit";
         }
 
         /**
