@@ -49,28 +49,29 @@
     <!-- ./container -->
 
     <!-- <script src="./myValidate.js"></script> -->
-    <script src="./myValidateForEach.js"></script>
+    <script src="./myValidate.js"></script>
     <script src="./myFunction.js"></script>
     <script>
         // set defualt isValid
-        var isValid = true;
+        var isValid = false;
 
-        // add event button click
+        // add event button {submit} click
         document.getElementById("btnSubmit").addEventListener("click", function() {
+            // prepare data
             var objItemInput = prepareDataInput();
             // into validate
             validateForm(objItemInput);
-            console.log(isValid)
             if (isValid) {
                 saveToDbMaster(objItemInput);
             }
         }); // for submit form
+
+        // add event button {edit} click
         document.getElementById("btnEdit").addEventListener("click", function() {
             var dataId = this.value; // dbMaster of id
             var objItemInput = prepareDataInput();
             // into validate
             validateForm(objItemInput);
-            console.log(isValid)
             if (isValid) {
                 editToDbMaster(dataId, objItemInput);
             }

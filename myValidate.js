@@ -24,7 +24,5 @@ function validateForm(objItemInput) {
 
     if (counter >= Object.keys(objItemInput).length) {
         return isValid = true;
-    } else {
-        return isValid = false;
     }
 }

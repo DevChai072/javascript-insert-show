@@ -14,9 +14,9 @@ function saveToDbMaster(objItemInput) {
     dbMaster.push(
         { id: sumDbMaster, fullname: objItemInput.inputFullname.value, address: objItemInput.inputAddress.value }
     );
-    var rowCount = sumDbMaster; // for use in row table
+    var dataId = sumDbMaster; // for use in row table
     var findIndex = sumDbMaster - 1; // for use find in array dbMaster
-    addDataOnTableBasic(rowCount, findIndex) // for find index in dbMaster
+    addDataOnTableBasic(dataId, findIndex) // for find index in dbMaster
 
     // reset form input
     resetForm();
@@ -54,14 +54,14 @@ function editToDbMaster(dataId, objItemInput) {
  /**
  * function for create data in table basic
  * dev Somchai O00085
-  * @param {*} rowCount 
+  * @param {*} dataId 
   * @param {*} findIndex 
   */
-function addDataOnTableBasic(rowCount, findIndex) {
+function addDataOnTableBasic(dataId, findIndex) {
     // create row on table
     var table = getTableName("tableBasic");
     // insert new tr
-    var row = table.insertRow(rowCount); 
+    var row = table.insertRow(dataId); 
     // insert to cell
     let cellId = row.insertCell(0);
     let cellFullname = row.insertCell(1);
@@ -151,7 +151,6 @@ function resetForm() {
  * @param {*} tagName
  */
 function defaultTagSpan(tagName) {
-    console.log("spnAlert" + tagName)
     document.getElementById("spnAlert" + tagName).innerHTML = "";
     document.getElementById("spnAlert" + tagName).style.color = "";
 }
