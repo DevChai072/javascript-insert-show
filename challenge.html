@@ -32,7 +32,7 @@
         }
         .form-group textarea {
             width: auto;
-            vertical-align: top;
+            vertical-align: middle;
         }
         /* set button confirm in form */
         .form-group #btn-confirm {
@@ -46,7 +46,7 @@
         .form-group #btn-edit {
             color: #ffffff;
             background-color: rgb(255, 187, 0);
-            border: 1px solid;
+            border: 1px solid red;
             border-radius: 10px;
             padding: 10px;
         }
@@ -230,7 +230,7 @@
                     if (strLength <= 0) { // if empty
                         // alert wrong function
                         alertWrong(formName);
-                        return false;
+                        // return false;
                     } else { // or have
                         // check type element in function
                         switch(tagElement) {
@@ -268,7 +268,8 @@
                     { id: itemId, fullname: arrElementForm.fullname[0].value, address: arrElementForm.address[0].value }
                 );
                 // show data on table
-                elementMaster.forEach(addDataRowsTable); 
+                // elementMaster.forEach(addDataRowsTable); 
+                addDataRowsTable(elementMaster[0]);
                 // show data on table challenge
                 elementMaster.forEach(addDataRowsTableChallenge);
                 itemId++;

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic</title>
+    <!-- Css style -->
+    <link rel="stylesheet" href="./myStyle.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <div class="labelInlineBlock">
+                <label for="txtFullname">ชื่อ-นามสกุล</label>
+            </div>
+            <div class="inputInlineBlock">
+                <input type="text" id="txtFullname" class="txtWidth" placeholder=" กรอกชื่อ นามสกุล">
+                <span id="alertTxtFullname"></span>
+            </div>
+        </div>
+        <div>
+            <div class="labelInlineBlock">
+                <label for="txtFullname">ที่อยู่</label>
+            </div>
+            <div class="inputInlineBlock">
+                <textarea id="txtAddress" class="txtWidth" rows="5" placeholder=" บ้านเลขที่&#10; ถนน&#10; ตำบล&#10; อำเภอ จังหวัด"></textarea>
+                <span id="alertTxtAddress"></span>
+            </div>
+        </div>
+        <div>
+            <div class="labelInlineBlock"></div>
+            <div class="inputInlineBlock">
+                <button id="btnSubmit">บันทึก</button>
+                <button id="btnEdit">Edit</button>
+            </div>
+        </div>
+        <div class="table">
+            <table id="tableBasic">
+                <tr>
+                    <th width="10%">ลำดับ</th>
+                    <th width="30%">ชื่อ-นามสกุล</th>
+                    <th width="40%">ที่อยู่</th>
+                    <th width="20%"></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- ./container -->
+
+    <!-- <script src="./myValidate.js"></script> -->
+    <script src="./myValidateForEach.js"></script>
+    <script src="./myFunction.js"></script>
+    <script>
+        // set defualt isValid
+        var isValid = true;
+
+        // add event button click
+        document.getElementById("btnSubmit").addEventListener("click", function() {
+            var objItemInput = prepareDataInput();
+            console.log("fullname: " + objItemInput.inputFullname.value.length);
+            console.log("address: " + objItemInput.inputAddress.value.length);
+            // into validate
+            validateForm(objItemInput);
+            console.log(isValid)
+            if (isValid) {
+                saveToDbMaster(objItemInput);
+            }
+        }); // for submit form
+        document.getElementById("btnEdit").addEventListener("click", function() {
+            var dataId = this.value; // dbMaster of id
+            var objItemInput = prepareDataInput();
+            console.log("fullname: " + objItemInput.inputFullname.length);
+            console.log("address: " + objItemInput.inputAddress.length);
+            // into validate
+            validateForm(objItemInput);
+            console.log(isValid)
+            if (isValid) {
+                editToDbMaster(dataId, objItemInput);
+            }
+        }); // for edit form
+    </script>
+</body>
+</html>
