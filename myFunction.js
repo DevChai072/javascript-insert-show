@@ -51,13 +51,12 @@ function editToDbMaster(dataId, objItemInput) {
     resetForm();
 }
 
-/**
+ /**
  * function for create data in table basic
  * dev Somchai O00085
- * @param {*} objItemInput 
- * @description
- *      - 
- */
+  * @param {*} rowCount 
+  * @param {*} findIndex 
+  */
 function addDataOnTableBasic(rowCount, findIndex) {
     // create row on table
     var table = getTableName("tableBasic");
@@ -90,8 +89,8 @@ function addDataOnTableBasic(rowCount, findIndex) {
  */
 function editInForm(findIndex) {
     // set isValid is true
-    isValid = true;
-    console.log("form edit : " + isValid)
+    // isValid = true;
+    // console.log("form edit : " + isValid)
 
     // hide button submit form
     document.getElementById("btnSubmit").style.display = "none";
