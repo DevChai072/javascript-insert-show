@@ -33,7 +33,7 @@ input.txtWidth, textarea.txtWidth {
     padding: 10px;
 }
 
-span#alertTxtAddress {
+span#spnAlertTxtAddress {
     vertical-align: top;
 }
 
@@ -88,7 +88,7 @@ table#tableBasic tr:nth-child(2n+0) {
     background-color: #e4d8f1;
 }
 
-table#tableBasic a.btnEditOnTbl, a.btnSaveOnTbl, a.btnCancelOnTbl {
+table#tableBasic a.btnEditOnTbl, a.btnSaveOnTbl, a.btnCancelOnTbl, a:-webkit-any-link {
     color: blue;
     text-decoration: none;
 }

@@ -16,7 +16,7 @@
             </div>
             <div class="inputInlineBlock">
                 <input type="text" id="txtFullname" class="txtWidth" placeholder=" กรอกชื่อ นามสกุล">
-                <span id="alertTxtFullname"></span>
+                <span id="spnAlertTxtFullname"></span>
             </div>
         </div>
         <div>
@@ -25,7 +25,7 @@
             </div>
             <div class="inputInlineBlock">
                 <textarea id="txtAddress" class="txtWidth" rows="5" placeholder=" บ้านเลขที่&#10; ถนน&#10; ตำบล&#10; อำเภอ จังหวัด"></textarea>
-                <span id="alertTxtAddress"></span>
+                <span id="spnAlertTxtAddress"></span>
             </div>
         </div>
         <div>
@@ -58,8 +58,6 @@
         // add event button click
         document.getElementById("btnSubmit").addEventListener("click", function() {
             var objItemInput = prepareDataInput();
-            console.log("fullname: " + objItemInput.inputFullname.value.length);
-            console.log("address: " + objItemInput.inputAddress.value.length);
             // into validate
             validateForm(objItemInput);
             console.log(isValid)
@@ -70,8 +68,6 @@
         document.getElementById("btnEdit").addEventListener("click", function() {
             var dataId = this.value; // dbMaster of id
             var objItemInput = prepareDataInput();
-            console.log("fullname: " + objItemInput.inputFullname.length);
-            console.log("address: " + objItemInput.inputAddress.length);
             // into validate
             validateForm(objItemInput);
             console.log(isValid)

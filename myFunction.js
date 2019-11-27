@@ -151,6 +151,7 @@ function resetForm() {
  * @param {*} tagName
  */
 function defaultTagSpan(tagName) {
-    document.getElementById("alert" + tagName).innerHTML = "";
-    document.getElementById("alert" + tagName).style.color = "";
+    console.log("spnAlert" + tagName)
+    document.getElementById("spnAlert" + tagName).innerHTML = "";
+    document.getElementById("spnAlert" + tagName).style.color = "";
 }
