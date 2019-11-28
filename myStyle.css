@@ -7,12 +7,10 @@ div.container {
     padding: 50px;
     margin-left: 100px;
     margin-right: 100px;
-    /* background-color: wheat; */
 }
 
 div.labelInlineBlock {
     display: inline-block;
-    /* border: 1px solid; */
     width: 120px;
     vertical-align: top;
     margin-bottom: 20px;
@@ -83,6 +81,10 @@ table#tableBasic th {
 
 table#tableBasic th, td {
     padding: 10px;
+}
+
+table#tableBasic td {
+    word-break: break-all;
 }
 
 table#tableBasic tr:nth-child(even) {

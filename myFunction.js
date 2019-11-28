@@ -1,3 +1,4 @@
+
 // create array db master
 var dbMaster = [];
 
@@ -9,13 +10,17 @@ var dbMaster = [];
  */
 function saveToDbMaster(objItemInput) {
     var sumDbMaster = dbMaster.length; // count data in array
+
     sumDbMaster++; // add value for put in id
+
     // add value to dbMaster
     dbMaster.push(
         { id: sumDbMaster, fullname: objItemInput.inputFullname.value, address: objItemInput.inputAddress.value }
     );
+
     var dataId = sumDbMaster; // for use in row table
     var findIndex = sumDbMaster - 1; // for use find in array dbMaster
+    
     addDataOnTableBasic(dataId, findIndex) // for find index in dbMaster
 
     // reset form input
@@ -60,8 +65,10 @@ function editToDbMaster(dataId, objItemInput) {
 function addDataOnTableBasic(dataId, findIndex) {
     // create row on table
     var table = getTableName("tableBasic");
+
     // insert new tr
     var row = table.insertRow(dataId); 
+
     // insert to cell
     let cellId = row.insertCell(0);
     let cellFullname = row.insertCell(1);
@@ -84,14 +91,10 @@ function addDataOnTableBasic(dataId, findIndex) {
 
 /**
  * function for edit data in form
- * @param {*} dataId
+ * @param {*} findIndex
  * @requires {3} dbMaster => id, dbMaster => fullname, dbMaster => address
  */
 function editInForm(findIndex) {
-    // set isValid is true
-    // isValid = true;
-    // console.log("form edit : " + isValid)
-
     // hide button submit form
     document.getElementById("btnSubmit").style.display = "none";
 
