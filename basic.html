@@ -61,14 +61,13 @@
     <script src="./myFunction.js"></script>
     <script>
         // set defualt isValid
-        var isValid = false;
-
+ 
         // add event button {submit} click
         document.getElementById("btnSubmit").addEventListener("click", function() {
             // prepare data
             var objItemInput = prepareDataInput();
             // into validate
-            validateForm(objItemInput);
+            var isValid = validateForm(objItemInput);
             if (isValid) {
                 saveToDbMaster(objItemInput);
             }
@@ -79,7 +78,7 @@
             var dataId = this.value; // dbMaster of id
             var objItemInput = prepareDataInput();
             // into validate
-            validateForm(objItemInput);
+            var isValid = validateForm(objItemInput);
             if (isValid) {
                 editToDbMaster(dataId, objItemInput);
             }
